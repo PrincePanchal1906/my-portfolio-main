@@ -1,10 +1,9 @@
-import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import React from "react";
+import { Link, Outlet } from "react-router-dom";
 
 export default function Layout() {
   return (
     <div className="portfolio-container min-h-screen">
-      {/* Background elements */}
       <div className="bg-blob blob-1"></div>
       <div className="bg-blob blob-2"></div>
 
@@ -21,7 +20,7 @@ export default function Layout() {
         </div>
       </nav>
 
-      <div className="pt-24">
+      <div className="pt-5 mt-5">
         <Outlet />
       </div>
     </div>
