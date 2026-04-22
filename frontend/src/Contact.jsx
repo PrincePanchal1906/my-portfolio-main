@@ -1,12 +1,27 @@
 import React, { useState } from "react";
 import "./contact.css";
 import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react";
+import axios from "axios";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const res = await axios.post(
+      "http://localhost:5000/api/getContact",
+      formData,
+    );
+    const data = res.data;
+    console.log(data);
+
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 3000);
   };
@@ -59,9 +74,30 @@ export default function Contact() {
             <form onSubmit={handleSubmit}>
               <h2>Send Message</h2>
 
-              <input type="text" placeholder="Your Name" required />
-              <input type="email" placeholder="Your Email" required />
-              <textarea placeholder="Your Message..." rows="5" required />
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                required
+                value={formData.name}
+                onChange={handleChange}
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+              />
+              <textarea
+                name="message"
+                placeholder="Your Message..."
+                rows="5"
+                required
+                value={formData.message}
+                onChange={handleChange}
+              />
 
               <button type="submit">
                 Send Message <Send size={18} />
