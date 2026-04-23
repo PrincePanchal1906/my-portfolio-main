@@ -77,7 +77,6 @@ export default function Contact() {
                 name="name"
                 placeholder="Your Name"
                 required
-                value={formData.name}
                 onChange={handleChange}
               />
               <input
@@ -85,7 +84,6 @@ export default function Contact() {
                 name="email"
                 placeholder="Your Email"
                 required
-                value={formData.email}
                 onChange={handleChange}
               />
               <textarea
@@ -93,7 +91,6 @@ export default function Contact() {
                 placeholder="Your Message..."
                 rows="5"
                 required
-                value={formData.message}
                 onChange={handleChange}
               />
 
