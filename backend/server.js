@@ -11,7 +11,7 @@ const API = process.env.FRONTEND_URL || "http://localhost:5173";
 const app = express();
 app.use(cors(
     {
-        origin: API,
+        origin: "*",
     }
 ));
 app.use(express.json());
