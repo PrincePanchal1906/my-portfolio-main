@@ -10,15 +10,13 @@ export default function Contact() {
     email: "",
     message: "",
   });
+  const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post(
-      "http://localhost:5000/api/getContact",
-      formData,
-    );
+    const res = await axios.post(`${API}/api/getContact`, formData);
     const data = res.data;
     console.log(data);
 

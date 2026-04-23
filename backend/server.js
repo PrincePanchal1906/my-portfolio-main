@@ -6,10 +6,12 @@ import contactRoutes from "./routes/contactRoutes.js";
 
 dotenv.config();
 
+const API = process.env.FRONTEND_URL || "http://localhost:5173";
+
 const app = express();
 app.use(cors(
     {
-        origin: "http://localhost:5173",
+        origin: API,
     }
 ));
 app.use(express.json());
