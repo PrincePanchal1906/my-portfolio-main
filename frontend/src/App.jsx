@@ -10,7 +10,15 @@ import ReactGA from "react-ga4";
 export default function App() {
   useEffect(() => {
     ReactGA.initialize("G-C9QDC9XQ9Q");
-    ReactGA.send("pageview");
+
+    // FORCE event
+    ReactGA.send({
+      hitType: "pageview",
+      page: window.location.pathname,
+      title: "Home Page",
+    });
+
+    console.log("GA Fired"); // check karva mate
   }, []);
   return (
     <Routes>
