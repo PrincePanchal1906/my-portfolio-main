@@ -4,8 +4,14 @@ import Home from "./Home";
 import About from "./About";
 import Projects from "./Projects";
 import Contact from "./Contact";
+import { useEffect } from "react";
+import ReactGA from "react-ga4";
 
 export default function App() {
+  useEffect(() => {
+    ReactGA.initialize("G-C9QDC9XQ9Q");
+    ReactGA.send("pageview");
+  }, []);
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
